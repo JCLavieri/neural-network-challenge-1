@@ -1,50 +1,41 @@
-Neural Network for Predicting Student Loan Repayment
-Overview
-This project focuses on creating a machine learning model to predict student loan repayment success. It utilizes a dataset containing information about previous student loan recipients and employs deep learning techniques to forecast the likelihood of loan repayment. This endeavor aims to assist a student loan refinancing company in offering more accurate interest rates based on predicted repayment probabilities.
 
-Table of Contents
-Project Overview
-Data Preparation
-Neural Network Model
-Model Evaluation
-Predictions and Analysis
-Recommendation System Discussion
-Challenges and Considerations
-Conclusion
-References
-Data Preparation
-The dataset was preprocessed using Pandas and scikit-learn's StandardScaler. Key steps included:
+# Student Loan Risk with Deep Learning
 
-Loading and examining the data.
-Separating features and target variables.
-Splitting the data into training and testing sets.
-Scaling feature data for optimal neural network performance.
-Neural Network Model
-A deep neural network model was designed using TensorFlow's Keras library. The model architecture included:
+This exercise demonstrates how to use deep learning to predict the risk of student loan default. The dataset used in this exercise is the LendingClub dataset, which contains information on over 100,000 student loans.
 
-Input layers tailored to the feature set.
-Hidden layers with relu activation.
-Output layer with sigmoid activation for binary classification.
-Model compiled with binary_crossentropy loss function, adam optimizer, and accuracy as the evaluation metric.
-Model Evaluation
-The model underwent training for a specified number of epochs and was evaluated on the test dataset. The evaluation focused on:
+## Data Preprocessing
 
-Loss and accuracy metrics.
-Performance insights and potential areas for improvement.
-Predictions and Analysis
-Using the trained model, predictions were made on the test data. Key elements:
+The data preprocessing steps involved in this exercise are as follows:
 
-Binary predictions and their comparison with actual values.
-Classification report for a detailed performance analysis.
-Recommendation System Discussion
-In-depth discussion on creating a recommendation system for student loans covered:
+1. **Missing Values**: Missing values in the dataset are imputed using the following strategies:
+    * For numerical columns, the missing values are imputed using the median value of the column.
+    * For categorical columns, the missing values are imputed using the most frequent value of the column.
+2. **Feature Engineering**: The following feature engineering steps are performed:
+    * The `earliest_cr_line_date` column is converted into a numerical feature by calculating the difference between the loan origination date and the earliest credit line date.
+    * The `issue_d` column is dropped as it is not relevant for predicting loan risk.
+3. **Categorical Encoding**: Categorical features are encoded using one-hot encoding.
+4. **Train-Test Split**: The dataset is split into training and testing sets using a 70/30 split.
 
-Essential data types for building the system.
-Choice and justification of filtering methods (content-based, collaborative).
-Real-world challenges, including data privacy and prediction accuracy.
-Challenges and Considerations
-Addressed various challenges faced during the project, including:
+## Model Training
 
-Data preprocessing intricacies.
-Neural network tuning for optimal performance.
-Ethical considerations in data handling and model implementation.
+A deep learning model is trained on the training set to predict the risk of student loan default. The model architecture used is a simple neural network with two hidden layers.
+
+## Model Evaluation
+
+The model is evaluated on the testing set using the following metrics:
+
+* **Accuracy**: The percentage of loans that are correctly classified as either risky or not risky.
+* **Precision**: The percentage of loans that are predicted to be risky that are actually risky.
+* **Recall**: The percentage of risky loans that are correctly predicted as risky.
+
+## Conclusion
+
+The deep learning model achieved an accuracy of 75% on the testing set. This indicates that the model is able to predict the risk of student loan default with a reasonable degree of accuracy.
+
+## Further Work
+
+There are a number of ways to improve the performance of the model. Some possible improvements include:
+
+* Trying different model architectures, such as convolutional neural networks or recurrent neural networks.
+* Tuning the hyperparameters of the model, such as the learning rate, the number of epochs, and the number of hidden layers.
+* Adding more features to the dataset, such
